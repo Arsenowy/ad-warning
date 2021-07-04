@@ -1,0 +1,12 @@
+{
+    "name": "Adwarning",
+    "description": "simple adwarning",
+    "version": "1.0",
+    "manifest_version": 3,
+
+    "icons": {
+        "16": "icons/icon16x16.png",
+        "48": "icons/icon48x48.png",
+        "128": "icons/icon128x128.png"
+    }
+}
