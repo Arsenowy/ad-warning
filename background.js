@@ -6,3 +6,4 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log(`Color to mark ad set to ${color}`);
     chrome.storage.sync.set({ status });
 })
+

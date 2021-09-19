@@ -24,4 +24,3 @@ function turnOnOff(e) {
 
 changeColor.addEventListener("change", handleColor);
 turnOnOffButton.addEventListener("change", turnOnOff);
-

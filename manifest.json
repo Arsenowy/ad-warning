@@ -1,25 +1,33 @@
 {
-    "name": "Adwarning",
-    "description": "simple adwarning",
-    "version": "1.0",
-    "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js"
-    },
-    "action": {
-        "default_popup": "popup/popup.html",
-        "default_icons": {
-        "16": "icons/icon16x16.png",
-        "48": "icons/icon48x48.png",
-        "128": "icons/icon128x128.png"
+  "name": "Adwarning",
+  "description": "simple adwarning",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+      "service_worker": "background.js"
+  },
+  "action": {
+      "default_popup": "popup/popup.html",
+      "default_icons": {
+      "16": "icons/icon16x16.png",
+      "48": "icons/icon48x48.png",
+      "128": "icons/icon128x128.png"
+  }
+  },
+  "permissions": [
+      "storage"
+  ],
+  "icons": {
+      "16": "icons/icon16x16.png",
+      "48": "icons/icon48x48.png",
+      "128": "icons/icon128x128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+        ],
+      "js": ["content.js"]
     }
-    },
-    "permissions": [
-        "storage"
-    ],
-    "icons": {
-        "16": "icons/icon16x16.png",
-        "48": "icons/icon48x48.png",
-        "128": "icons/icon128x128.png"
-    }
+  ]
 }
