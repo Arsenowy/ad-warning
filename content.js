@@ -11,59 +11,15 @@ let mainColor, switchButton;
 setTimeout(function () {
   if (switchButton == true) {
 
-    if (window.location.href.indexOf('https://www.facebook.com/') != -1) {
-      setTimeout(function () {
-        // const firstAd = document.querySelector('[data-pagelet="FeedUnit_1"]');
-        // markAd(firstAd);
-        var mutationObserver = new MutationObserver(function () {
-          throttleFunction(function () {
-            setTimeout(function () {
-              const ad = document.querySelectorAll('[data-pagelet="FeedUnit_{n}"]');
-              ad.forEach(el => {
-                const adIndicator = el.querySelector('a[aria-label="Sponsorowane"]');
-                if (adIndicator) {
-                  markAd(el);
-                }
-              })
-            }, 500);
-          }, 500);
-        });
-
-        // Starts listening for changes in the root HTML element of the page.
-        mutationObserver.observe(document.documentElement, {
-          attributes: false,
-          characterData: false,
-          childList: true,
-          subtree: true,
-          attributeOldValue: false,
-          characterDataOldValue: false
-        });
-
-        var timerId;
-        // Throttle function: Input as function which needs to be throttled and delay is the time interval in milliseconds
-        var throttleFunction = function (func, delay) {
-          // If setTimeout is already scheduled, no need to do anything
-          if (timerId) {
-            return
-          }
-          // Schedule a setTimeout after delay seconds
-          timerId = setTimeout(function () {
-            func()
-            // Once setTimeout function execution is finished, timerId = undefined so that in <br>
-            // the next scroll event function execution can be scheduled by the setTimeout
-            timerId = undefined;
-          }, delay)
-        }
-      }, 1500);
-    }
-    else {
+    (function () {
       // list of ads to mark
       const toDel = '[id*="google_ads"], [id^=spons], [id*="onet-ad"], [id^="googleads"], [src*="googleads"], [src*="creativecdn"], [src*="googlesyndication"], [href*="googleads"] ';
       setTimeout(function () {
         selecting(toDel);
       }, 1500);
       observer(toDel);
-    }
+    })();
+
 
     function selecting(name) {
       document.querySelectorAll(name).forEach(el => { markAd(el); })
@@ -132,7 +88,6 @@ setTimeout(function () {
       }
     }
   }
-
 }, 100);
 
 
