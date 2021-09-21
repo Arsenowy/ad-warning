@@ -1,12 +1,13 @@
 const changeColor = document.getElementById("markingColor");
 const turnOnOffButton = document.getElementById("turnOnOffButton");
+const submitButton = document.querySelector('#submitButton');
 
 //on init
 chrome.storage.sync.get("color", ({ color }) => {
     changeColor.value = color;
 })
-chrome.storage.sync.get("status", ({ status }) => {
-    turnOnOffButton.checked = status;
+chrome.storage.sync.get("onOffButton", ({ onOffButton }) => {
+    turnOnOffButton.checked = onOffButton;
 })
 
 function handleColor(e) {
@@ -15,12 +16,19 @@ function handleColor(e) {
     changeColor.value = color;
 }
 function turnOnOff(e) {
-
-    const status = e.target.checked;
-    chrome.storage.sync.set({ status });
-    turnOnOffButton.checked = status;
-
+    const onOffButton = e.target.checked;
+    chrome.storage.sync.set({ onOffButton });
+    turnOnOffButton.checked = onOffButton;
 }
+// reload button
+(function() {
+    submitButton.addEventListener('click', () => {
+        chrome.tabs.query({active: true, currentWindow: true}, function (arrayOfTabs) {
+            chrome.tabs.reload(arrayOfTabs[0].id);
+        });
+    })
+})()
+
 
 changeColor.addEventListener("change", handleColor);
 turnOnOffButton.addEventListener("change", turnOnOff);
