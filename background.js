@@ -1,5 +1,5 @@
 let color = "#db0d0d";
-let onOffButton = false;
+let onOffButton = true;
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set({ color });
